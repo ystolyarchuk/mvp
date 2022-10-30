@@ -1,0 +1,17 @@
+<div class="ui-custom-modal" [ngClass]="{'error': data?.type}">
+  <h1 mat-dialog-title>
+      {{data.title}}
+    <i class="icon-close icon-x" (click)="onCancelClick()"></i></h1>
+  <div mat-dialog-content>
+    <p *ngIf="data.text">{{data.text}}</p>
+    <p *ngIf="data.html" [innerHTML]="data.html"></p>
+  </div>
+  <div mat-dialog-actions>
+    <button class="btn btn-secondary" type="button" (click)="onCancelClick()">
+      {{data?.btnCancel || 'Cancel'}}
+    </button>
+    <button class="btn btn-blue" type="button" [mat-dialog-close]="true">
+      {{data?.btnAccept || 'Confirm'}}
+    </button>
+  </div>
+</div>

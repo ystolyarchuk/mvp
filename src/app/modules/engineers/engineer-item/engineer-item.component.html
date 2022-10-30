@@ -1,0 +1,51 @@
+<div class="engineer">
+  <div class="engineer-content">
+    <div class="header">
+      <div class="img">
+        <img [src]="engineer?.img  || 'assets/no-image.png'" alt="">
+      </div>
+      <div class="info">
+        <div class="name">{{engineer.name}}</div>
+        <div class="position">{{engineer.self_assessment | uppercase}}</div>
+      </div>
+    </div>
+    <div class="content-info">
+      <div class="row-info">
+        <div class="info-label">Salary expectations</div>
+        <div class="info-value">{{engineer.expected_salary}}</div>
+      </div>
+      <div class="row-info">
+        <div class="info-label">Experience</div>
+        <div class="info-value">{{engineer.experience_years}}</div>
+      </div>
+      <div class="row-info">
+        <div class="info-label">Main skill</div>
+        <div class="info-value">{{engineer.main_skill_text}}</div>
+      </div>
+      <!--<div class="row-info">
+        <div class="info-label">Location</div>
+        <div class="info-value">{{engineer.location}}</div>
+      </div>-->
+    </div>
+  </div>
+  <hr class="no-margin">
+  <footer>
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="btn btn-blue" (click)="sendInvite(engineer.id)">
+          Invite
+        </div>
+        <!--<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="confirmDialog(engineer.id)">
+            <i class="icon-user-plus"></i>
+            <span>Invite</span>
+          </button>
+        </mat-menu>-->
+      </div>
+      <div class="col col-auto"> <span class="score" [ngClass]="{'orange': engineer.range_test < 5}">{{engineer.range_test}}</span></div>
+    </div>
+  </footer>
+</div>

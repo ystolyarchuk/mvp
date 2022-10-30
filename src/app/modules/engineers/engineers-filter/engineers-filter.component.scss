@@ -1,0 +1,26 @@
+.filter {
+  padding: 12px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #fff;
+
+  .filter-item {
+    padding: 0 5px;
+    width: 200px;
+  }
+}
+
+:host {
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+
+    .wrap {
+      .material-icons {
+        top: 57%!important;
+      }
+    }
+  }
+}

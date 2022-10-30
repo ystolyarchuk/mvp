@@ -1,0 +1,12 @@
+<div [matMenuTriggerFor]="menu" class="user-nav" *ngIf="user">
+  <div class="wrap-img">
+    <img [src]="user?.src || 'assets/no-image.png'" alt="">
+  </div>
+  <span class="name">{{user.first_name + ' ' + user.last_name }}</span>
+  <mat-icon>keyboard_arrow_down</mat-icon>
+</div>
+<mat-menu #menu="matMenu">
+  <span mat-menu-item class="logout" (click)="logout()">
+    <i class="icon-log-out"></i>Logout
+  </span>
+</mat-menu>

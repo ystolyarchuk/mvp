@@ -1,0 +1,28 @@
+.candidates-content {
+  display: flex;
+  background: #EAECF4;
+  height: calc(100vh - 60px);
+  width: 100%;
+}
+
+.aside {
+  width: 240px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #fff;
+}
+
+.content {
+  width: calc(100% - 240px);
+  display: flex;
+  flex-direction: column;
+
+  .candidates {
+    padding: 20px;
+    overflow-y: auto;
+  }
+}
+
+.filter {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}

@@ -1,0 +1,26 @@
+<div class="login-screen">
+  <div class="login-content">
+    <div class="header">
+      <img src="assets/site-logo.svg" alt="">
+    </div>
+    <app-spinner *ngIf="isLoading"></app-spinner>
+    <form *ngIf="!isLoading" [formGroup]="form" action="" class="">
+      <div class="cms-content center">
+        <h2>Recruiter login!</h2>
+        <p>Create an order to start receiving resumes</p>
+      </div>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControlName]="'email'">
+      </mat-form-field>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControlName]="'password'">
+      </mat-form-field>
+      <div class="wrap-links">
+        <a [routerLink]="['/registration']">Registration</a>
+      </div>
+      <button [disabled]="form.invalid" type="button" class="btn btn-blue width-100" (click)="sendForm()">Login</button>
+    </form>
+  </div>
+</div>

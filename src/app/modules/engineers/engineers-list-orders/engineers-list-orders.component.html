@@ -1,0 +1,8 @@
+<div class="skills" [formGroup]="form">
+  <ng-container *ngFor="let order of orders; let i = index;">
+    <label class="skill-item" [class.active]="orderRef.checked">
+      <input type="radio" #orderRef [formControlName]="'order'" [value]="order.id">
+      <span class="btn-label"> {{order.name}} </span>
+    </label>
+  </ng-container>
+</div>

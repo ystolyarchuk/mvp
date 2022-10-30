@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-2">
+    <a [routerLink]="['/orders']" class="btn btn-round btn-back"><i class="icon-back"></i>Back</a>
+  </div>
+  <div *ngIf="isLoading" class="col-12">
+    <app-spinner></app-spinner>
+  </div>
+  <ng-container *ngIf="!isLoading">
+    <div class="col-8">
+      <div class="card">
+        <h2>{{order?.name}}</h2>
+
+        <div class="info">
+          <div class="label">Main skill</div>
+          <span class="tag">{{order?.main_skill_text}}</span>
+        </div>
+        <hr>
+        <div class="sub-title">Job description</div>
+        <div class="cms-content">
+          <p>{{order?.description}}</p>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="info">
+              <div class="label">Years of experience</div>
+              <span class="value">{{order?.years_of_experience}}</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info">
+              <div class="label">Programmers needed</div>
+              <span class="value">{{order?.programmers_needed}}</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info">
+              <div class="label">Location</div>
+              <span class="value">{{order?.country?.name + ', ' + order?.city?.name}}</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info">
+              <div class="label">Salary range</div>
+              <span class="value">{{order?.annual_salary_min}} - {{order?.annual_salary_min}}</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info">
+              <div class="label">Min score</div>
+              <span class="value">{{orderScore}}</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info">
+              <div class="label">Due date</div>
+              <span class="value">{{order?.due_date | formatDate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" *ngIf="engineers.length">
+        <div class="engineers">
+          <div class="item" *ngFor="let engineer of engineers">
+            <app-order-engineer [engineer]="engineer"></app-order-engineer>
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <a [routerLink]="['/orders/' + order?.id + '/edit']" class="btn">Edit order</a>
+      </div>
+    </div>
+  </ng-container>
+</div>

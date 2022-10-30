@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  position: relative;
+
+  &, .mat-form-field {
+    width: 100%;
+  }
+  .wrap {
+    position: relative;
+    input {
+      padding-right: 25px !important;
+    }
+
+    .material-icons {
+      position: absolute;
+      top: 40%;
+      right: 5px;
+      z-index: 2;
+      pointer-events: none;
+      color: #757575;
+      transform: translateY(-50%);
+    }
+  }
+}

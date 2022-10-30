@@ -1,0 +1,162 @@
+<div class="main-content">
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <div class="card" *ngIf="!isLoading">
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-6">
+          <div class="title">Personal details</div>
+          <hr>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Photo</div>
+            </div>
+            <div class="col-6">
+<!--              <app-file-btn [formControlName]="'photo'"></app-file-btn>-->
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Nickname</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline" floatLabel="never">
+                <input type="text" matInput [formControlName]="'name'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">First name</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="text" matInput [formControlName]="'first_name'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Last name</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="text" matInput [formControlName]="'last_name'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Phone</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="number" matInput [formControlName]="'phone_number'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Location</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="text" matInput [formControlName]="'location'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="title">Profession details</div>
+          <hr>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Self assessment</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-select [formControlName]="'self_assessment'">
+                  <mat-option *ngFor="let item of levels" [value]="item.id">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Main skill</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-select [formControlName]="'main_skill'">
+                  <mat-option *ngFor="let item of mainSkills" [value]="item.id">
+                    {{item.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Expected salary</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="number" matInput [formControlName]="'expected_salary'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Experience years</div>
+            </div>
+            <div class="col-6">
+              <div class="counter">
+                <div class="btn-counter" (click)="counter('experience_years')"><i class="icon-minus"></i></div>
+                <div class="btn-value">{{form.get('experience_years').value}}</div>
+                <div class="btn-counter" (click)="counter('experience_years', true)"><i class="icon-plus"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="title">
+            Login details
+          </div>
+          <hr>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Email</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="email" matInput [formControlName]="'email'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Password</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="password" matInput [formControlName]="'password'">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row row-icon-title">
+            <div class="col-6">
+              <div class="label">Confirm password</div>
+            </div>
+            <div class="col-6">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <input type="password" matInput [formControlName]="'password_confirmation'">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <button class="btn btn-blue">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<table class="order-item" (click)="viewOrder()">
+  <thead>
+    <tr>
+      <td>Order name</td>
+      <td>Location</td>
+      <td>Main skill</td>
+      <td>Min score</td>
+      <td>Programmers</td>
+      <td>Due date</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>{{order.name}}</strong></td>
+      <td>{{order?.country?.name + ', ' + order?.city?.name}}</td>
+      <td>{{order.main_skill_text}}</td>
+      <td>{{orderScore}}</td>
+      <td>{{order.programmers_needed}}</td>
+      <td>{{order.due_date | formatDate}}</td>
+      <td style="text-align: right">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" (click)="clickMenu($event)">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="viewOrder()">
+            <i class="icon-eye"></i>
+            <span>View order</span>
+          </button>
+          <button mat-menu-item (click)="editOrder()">
+            <i class="icon-edit"></i>
+            <span>Edit order</span>
+          </button>
+          <button mat-menu-item (click)="deleteOrder()">
+            <i class="icon-trash"></i>
+            <span>Delete order</span>
+          </button>
+        </mat-menu>
+      </td>
+    </tr>
+  </tbody>
+</table>

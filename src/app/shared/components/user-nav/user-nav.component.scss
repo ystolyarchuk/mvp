@@ -1,0 +1,25 @@
+.user-nav {
+  display: flex;
+  align-items: center;
+  color: #6E7585;
+  cursor: pointer;
+  margin-left: 20px;
+
+  .wrap-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+}
+
+.logout {
+  display: inline-flex;
+  align-items: center;
+
+  .icon-log-out {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+}

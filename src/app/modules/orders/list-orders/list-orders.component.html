@@ -1,0 +1,15 @@
+<div class="list-orders">
+  <ng-container *ngIf="!isLoading && orders.length">
+    <ng-container *ngFor="let order of orders">
+      <app-order-item [order]="order" (onDeleteOrder)="deleteOrder($event)"></app-order-item>
+    </ng-container>
+  </ng-container>
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <ng-container *ngIf="!isLoading && !orders.length">
+    <div class="center">
+      <br>
+        <h3>There are no orders yet</h3>
+      <br>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,30 @@
+@import "src/app/scss/constants";
+
+.info {
+  margin-bottom: 18px;
+
+  .label {
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: #6E7585;
+  }
+  .value {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.engineers {
+  display: flex;
+  flex-wrap: wrap;
+  margin:  0 -5px;
+
+  .item {
+    padding: 0 5px;
+    margin: 5px 0;
+    width: 50%;
+  }
+
+}

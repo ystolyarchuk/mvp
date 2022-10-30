@@ -1,0 +1,51 @@
+<div class="filter" [formGroup]="form">
+  <div class="filter-item">
+    <mat-form-field class="w-100" appearance="outline">
+      <input type="text" matInput [formControlName]="'country_code'" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnCountry"
+                        (optionSelected)="selectCountry($event)">
+        <mat-option *ngFor="let option of filteredCountries | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="filter-item">
+    <mat-form-field class="w-100" appearance="outline">
+      <input type="text" matInput [formControlName]="'city_id'" [matAutocomplete]="auto2">
+      <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFnCity">
+        <mat-option *ngFor="let option of filteredCities | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="filter-item">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Main skill</mat-label>
+      <mat-select [formControlName]="'main_skill'" multiple>
+        <mat-option *ngFor="let skill of mainSkills" [value]="skill">{{skill.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="filter-item">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Self assessment</mat-label>
+      <mat-select [formControlName]="'self_assessment'" multiple>
+        <mat-option *ngFor="let level of levels" [value]="level">{{level.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="filter-item">
+    <mat-form-field class="w-100" style="width: 100%;" appearance="outline">
+      <mat-label>Salary from</mat-label>
+      <input matInput type="number" [formControlName]="'salary_from'">
+    </mat-form-field>
+  </div>
+  <div class="filter-item">
+    <mat-form-field class="w-100" style="width: 100%;" appearance="outline">
+      <mat-label>Salary to</mat-label>
+      <input matInput type="number" [formControlName]="'salary_to'">
+    </mat-form-field>
+  </div>
+</div>

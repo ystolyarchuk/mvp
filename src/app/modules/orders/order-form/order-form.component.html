@@ -1,0 +1,157 @@
+<div class="col-12">
+  <a [routerLink]="['/orders']" class="btn btn-round btn-back"><i class="icon-back"></i>Back</a>
+</div>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<form *ngIf="!isLoading" [formGroup]="form">
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="title">Create a new order</div>
+        <div class="row-icon-title">
+          <i class="icon-img">
+            <img src="assets/svg/note-edit.svg" alt="">
+          </i>
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <mat-label>Order name</mat-label>
+            <input matInput [formControlName]="'name'">
+          </mat-form-field>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">Programmers needed</div>
+          </div>
+          <div class="col-7">
+            <div class="counter">
+              <div class="btn-counter" (click)="counter('programmers_needed')"><i class="icon-minus"></i></div>
+              <div class="btn-value">{{form.get('programmers_needed').value}}</div>
+              <div class="btn-counter" (click)="counter('programmers_needed', true)"><i class="icon-plus"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">Main skill</div>
+          </div>
+          <div class="col-7">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-select [formControlName]="'main_skill'">
+                <mat-option *ngFor="let item of mainSkills" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">Minimum years of experience</div>
+          </div>
+          <div class="col-7">
+            <div class="counter">
+              <div class="btn-counter" (click)="counter('years_of_experience')"><i class="icon-minus"></i></div>
+              <div class="btn-value">{{form.get('years_of_experience').value}}</div>
+              <div class="btn-counter" (click)="counter('years_of_experience', true)"><i class="icon-plus"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">Location</div>
+          </div>
+          <div class="col-7">
+            <mat-form-field class="w-100" appearance="outline">
+              <input type="text" matInput [formControlName]="'country_code'" [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFnCountry"
+                                (optionSelected)="selectCountry($event)">
+                <mat-option *ngFor="let option of filteredCountries | async" [value]="option">
+                  {{option.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">City</div>
+          </div>
+          <div class="col-7">
+            <mat-form-field class="w-100" appearance="outline">
+              <input type="text" matInput [formControlName]="'city_id'" [matAutocomplete]="auto2">
+              <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayFnCity">
+                <mat-option *ngFor="let option of filteredCities | async" [value]="option">
+                  {{option.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">Minimum Skillcheckers score</div>
+          </div>
+          <div class="col-7">
+            <mat-radio-group [formControlName]="'min_range_test'">
+              <mat-radio-button [value]="item.value" *ngFor="let item of scoreTypes;let i= index;">
+                {{item.name}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">Monthly salary range</div>
+          </div>
+          <div class="col-7">
+            <div class="row">
+              <div class="col-6">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                  <input type="text" matInput [formControlName]="'annual_salary_min'">
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                  <input type="text" matInput [formControlName]="'annual_salary_max'">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5">
+            <div class="label">
+              <i class="icon-clock blue"></i>
+              Due date
+            </div>
+          </div>
+          <div class="col-7">
+            <mat-form-field style="width: 100%" appearance="outline">
+              <input [min]="today" matInput [matDatepicker]="picker" [formControlName]="'due_date'">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="title">
+          <i class="icon-img">
+            <img src="assets/icons/note-note.svg" alt="">
+          </i>Job description
+        </div>
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Name</mat-label>
+          <textarea style="height: 200px" matInput [formControlName]="'description'"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <button [disabled]="form.invalid" type="button" class="btn btn-blue" (click)="sendForm()">Save</button>
+    </div>
+  </div>
+</form>

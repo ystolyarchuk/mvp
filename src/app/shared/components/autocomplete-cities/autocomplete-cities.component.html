@@ -1,0 +1,17 @@
+<div class="wrap">
+  <mat-form-field class="w-100" appearance="outline">
+    <input [defaultErrors] = "false" matInput
+           [matAutocomplete]="itemsAutocomplete" [formControl]="itemCtrl">
+    <mat-label>{{placeholder || 'City'}}</mat-label>
+    <mat-autocomplete #itemsAutocomplete="matAutocomplete" class="custom-autocomplete"
+                      (opened)="autoCompleteScroll()" (optionSelected)="inputChange($event)" [displayWith]="displayFn">
+      <mat-option *ngFor="let item of filteredItems" [value]="item">
+        <span>{{item.name}}</span>
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="itemCtrl.getError('required')">
+      Field is required!
+    </mat-error>
+  </mat-form-field>
+  <i *ngIf="arrow" class="material-icons">arrow_drop_down</i>
+</div>

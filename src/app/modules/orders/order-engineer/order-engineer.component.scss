@@ -1,0 +1,54 @@
+@import "src/app/scss/constants";
+
+:host {
+  background: $bg-light2;
+  padding: 20px;
+  display: block;
+}
+.wrap-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.info {
+  width: calc(100% - 110px);
+  padding-left: 15px;
+}
+.name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.sub-name {
+  font-size: 13px;
+  line-height: 19px;
+  color: $text;
+}
+
+.range {
+  background: #FFFFFF;
+  border: 2px solid $success;
+  box-sizing: border-box;
+  border-radius: 65px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #25BF50;
+  width: 44px;
+  height: 20px;
+
+  &.orange {
+    border-color: $orange;
+    color: $orange;
+  }
+}

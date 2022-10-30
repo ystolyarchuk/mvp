@@ -1,0 +1,10 @@
+<div class="d-flex align-items-center">
+  <div class="wrap-img">
+    <img [src]="engineer?.avatar || 'assets/no-image.png'" alt="">
+  </div>
+  <div class="info">
+    <div class="name">{{engineer.name}}</div>
+    <div class="sub-name">{{engineer.self_assessment}} {{engineer.main_skill_text}}</div>
+  </div>
+  <div class="range">{{engineer.range_test}}</div>
+</div>

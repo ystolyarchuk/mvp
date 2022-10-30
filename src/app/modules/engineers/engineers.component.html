@@ -1,0 +1,22 @@
+<div class="candidates-content">
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <ng-container *ngIf="!isLoading">
+    <div class="aside">
+      <app-engineers-list-orders *ngIf="orders.length" #ordersRef [orders]="orders" (changed)="changeOrders($event)"></app-engineers-list-orders>
+      <p *ngIf="!orders.length">There are no orders yet</p>
+    </div>
+    <div class="content">
+      <div class="filter">
+        <app-engineers-filter [mainSkills]="mainSkills"
+                              [levels]="levels"
+                              (reset)="resetFilter()"
+                              (changed)="changeFilter($event)">
+        </app-engineers-filter>
+      </div>
+      <div class="candidates">
+        <app-spinner *ngIf="isSmLoading"></app-spinner>
+        <app-engineers-list [orderId]="filter.order_id" *ngIf="!isSmLoading" [engineers]="engineers"></app-engineers-list>
+      </div>
+    </div>
+  </ng-container>
+</div>
